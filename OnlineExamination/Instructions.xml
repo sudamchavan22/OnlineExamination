@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<InstructionsForSudent>
+  <Instructions>
+    <Instruction> No Nagative marking. </Instruction>
+  </Instructions>
+  <Instructions>
+    <Instruction> Exam Time is 1 hours </Instruction>
+  </Instructions>
+    <Instructions>
+    <Instruction> Click the 'Submit Test' button given in the bottom of this page to Submit your answers.</Instruction>
+  </Instructions>
+    <Instructions>
+    <Instruction> Test will not submitted automatically if the time expired. </Instruction>
+  </Instructions>
+  <Instructions>
+    <Instruction> Submit your Answers by clicking on "Submit Test" Button within time.  </Instruction>
+  </Instructions>
+  <Instructions>
+    <Instruction> IF you not submit your Answers within Exam period, your Answers are not Considared/Submit automatically.  </Instruction>
+  </Instructions>
+  <Instructions>
+    <Instruction> Do not close,minimize window. </Instruction>
+  </Instructions>
+  <Instructions>
+    <Instruction> Do not click on Navigation buttons of browser window.</Instruction>
+  </Instructions>
+  <Instructions>
+    <Instruction> If you click on Navigation buttons of Browser, it may chance to exit or terminate the exam session. </Instruction>
+  </Instructions>
+    <Instructions>
+    <Instruction> Don't refresh the page. </Instruction>
+  </Instructions>
+
+ </InstructionsForSudent>
