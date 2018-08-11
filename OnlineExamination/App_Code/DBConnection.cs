@@ -12,6 +12,7 @@ namespace OnlineExamination
         public string ConnState
         {
             get { return ConfigurationManager.ConnectionStrings["OnlineExaminationDB"].ConnectionString; }
+            //modified by sudam chavan
         }
 
     }
