@@ -70,6 +70,7 @@
     <Content Include="frmNewController.aspx" />
     <Content Include="frmResult.aspx" />
     <Content Include="frmSetExamDateTime.aspx" />
+    <Content Include="frmStudRegistration.aspx" />
     <Content Include="frmSubjects.aspx" />
     <Content Include="frmTest.aspx" />
     <Content Include="images\1.jpg" />
@@ -149,6 +150,13 @@
     </Compile>
     <Compile Include="frmSetExamDateTime.aspx.designer.cs">
       <DependentUpon>frmSetExamDateTime.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmStudRegistration.aspx.cs">
+      <DependentUpon>frmStudRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmStudRegistration.aspx.designer.cs">
+      <DependentUpon>frmStudRegistration.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmSubjects.aspx.cs">
       <DependentUpon>frmSubjects.aspx</DependentUpon>
