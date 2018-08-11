@@ -135,4 +135,52 @@ border-radius:10px;
             <br />
         </asp:Panel>
         </div>
+      <asp:ModalPopupExtender ID="mpeSetExam" runat="server" BackgroundCssClass="modalBackground" PopupControlID="LoginPopup" TargetControlID="btnSet"
+            CancelControlID="lbtnCancel"></asp:ModalPopupExtender>
+          
+        <div id="LoginPopup" style="text-align:center; vertical-align:middle; width: 399px;height:300px;" class="login radius">
+       <br />
+         <h1 style="color:#0026ff">Set Class And Subject here!</h1>
+        <hr />
+        <br />
+            <asp:DropDownList runat="server" ID="lstClass">
+                <asp:ListItem Value="0" Text="--Select Class--"></asp:ListItem>
+                <asp:ListItem Value="1" Text="1st"></asp:ListItem>
+            </asp:DropDownList>
+               <asp:LinkButton runat="server" ID="lnkbtn_1">Add Subjects</asp:LinkButton>
+            <div id="divAddSubjects">
+
+            </div>
+           
+
+
+
+
+
+
+            <asp:DropDownList runat="server" ID="lstSubjects">
+                <asp:ListItem Value="0" Text="--Select Subjects--"></asp:ListItem>
+                <asp:ListItem Value="1" Text="1st"></asp:ListItem>
+            </asp:DropDownList>
+
+
+
+
+
+
+
+      <%--       <asp:UpdatePanel ID="upSubject" runat="server" UpdateMode="Conditional" ClientIDMode="Predictable" RenderMode="Inline">
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="lstClass"  EventName="SelectedIndexChanged"/>
+            </Triggers>
+            <ContentTemplate>
+                <asp:Label ID="Label1" runat="server" Text="" ForeColor="Red"></asp:Label>
+                 </ContentTemplate>
+        </asp:UpdatePanel>--%>
+            <div align="center" style="width:100%">
+   
+             <asp:Button ID="btnSetExam" runat="server" CssClass="btn" Text="LogIn" ValidationGroup="SetExam" OnClick="btnSetExam_Click"/>
+             <asp:LinkButton ID="lbtnCancel" runat="server" CssClass="btn" style="position:absolute;right:10px;padding:5px;margin-bottom:5px;">Cancel</asp:LinkButton>
+               </div>
+    </div>
 </asp:Content>

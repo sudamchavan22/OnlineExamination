@@ -79,6 +79,8 @@
     <Content Include="index.aspx" />
     <Content Include="Instructions.xml" />
     <Content Include="PrintResult.aspx" />
+    <Content Include="script\jquery.min.js" />
+    <Content Include="script\SetExam.js" />
     <Content Include="Styles\design.css" />
     <Content Include="Web.config" />
   </ItemGroup>

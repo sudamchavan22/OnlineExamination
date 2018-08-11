@@ -19,7 +19,7 @@
         }
     </style>
 </head>
-<body style="background-image: url('http://localhost:52109/images/max.jpg');background-size:cover;">
+<body style="background-image: url('/images/max.jpg');background-size:cover;">
     <form id="form1" runat="server">
     <div style="background-color: #fff;text-align:center;margin-left:23%;margin-right:20%;width:731px" >
     <table align="center" class="auto-style1" style="border-style: solid;">

@@ -8,6 +8,8 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="Styles/design.css" rel="stylesheet" />
+    <script src="script/jquery.min.js"></script>
+    <script src="script/SetExam.js"></script>
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -38,7 +40,7 @@
         }
         </style>
 </head>
-<body style="background-image: url('http://localhost:52109/images/1.jpg');background-size:cover;">
+<body style="background-image: url('/images/1.jpg');background-size:cover;">
     <form id="form1" runat="server">
         <div>
             <asp:Image ID="imgbanner" runat="server" ImageUrl="~/images/banner.jpg" Width="100%" />
