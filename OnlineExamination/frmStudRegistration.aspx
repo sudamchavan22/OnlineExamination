@@ -19,6 +19,7 @@
      width:auto;
      height:30px;
 border-radius:10px;
+
 }
         .auto-style10 {
             margin-bottom: 0px;
