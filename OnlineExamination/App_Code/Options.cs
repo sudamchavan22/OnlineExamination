@@ -11,5 +11,6 @@ namespace OnlineExamination
         public string Value { get; set; }
         public int unSolvQ { get; set; }
         public int SolvQ { get; set; }
+        //update this by ram
       }
 }
