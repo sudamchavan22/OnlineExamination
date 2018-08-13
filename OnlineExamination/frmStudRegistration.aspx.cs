@@ -105,7 +105,7 @@ namespace OnlineExamination
             str += "'Y','N'";
 
             int count = 0;
-            count = db.stud_Reg(str);
+           // count = db.stud_Reg(str);
             if (count > 0)
             {
                 Response.Write("<script>alert('Student Register Successfully!')</script>");

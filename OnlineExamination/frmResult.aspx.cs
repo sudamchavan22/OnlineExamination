@@ -44,7 +44,7 @@ namespace OnlineExamination
         {
              Label lbldate=(Label) GridView1.SelectedRow.FindControl("lbldate");
              txtdate.Text = lbldate.Text;
-             //Response.Redirect("http://localhost:52109/PrintResult.aspx");
+             //Response.Redirect("/PrintResult.aspx");
         }
     }
 }
