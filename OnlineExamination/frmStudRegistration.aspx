@@ -81,6 +81,7 @@ border-radius:10px;
     <script>
         $(function callevent() {
 
+
            // alert('Calling event')
           //  $("#BtnSave").click(function () {
            $(document.getElementById('<%=BtnSave.ClientID%>')).click(function () {

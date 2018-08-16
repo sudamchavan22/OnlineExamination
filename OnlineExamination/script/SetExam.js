@@ -1,6 +1,6 @@
 ﻿$(function () {
 
-alert('hi')
+//alert('hi')
 $("lb").click(function () { })
 
 
