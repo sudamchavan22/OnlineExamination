@@ -5,6 +5,9 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
 
 namespace OnlineExamination
 {
@@ -449,5 +452,98 @@ namespace OnlineExamination
 
 
 
+
+        public int stud_Reg(string str)
+        {
+            count = 0;
+            cmd = new SqlCommand(str, con);
+            if (con.State == 0)
+            {
+                con.Open();
+            }
+            count = cmd.ExecuteNonQuery();
+            con.Close();
+            return count;
+        }
+
+        public void fillgrid(GridView dg, string str)
+        {
+            //cmd.Connection = con;
+            //cmd.CommandText = str;
+            cmd = new SqlCommand(str, con);
+            if (con.State == 0)
+            {
+                con.Open();
+            }
+            DataSet ds = new DataSet();
+            //da = new OleDbDataAdapter(sql, con);
+            da = new SqlDataAdapter(str, con);
+            da.Fill(ds);
+            dg.DataSource = ds.Tables[0];
+            dg.DataBind();
+        }
+
+        public void fillCbo(string str, DropDownList ddl)
+        {
+
+            cmd = new SqlCommand(str, con);
+            if (con.State == 0)
+            {
+                con.Open();
+            }
+            DataSet ds = new DataSet();
+            da = new SqlDataAdapter(str, con);
+            //            OleDbDataAdapter da = new OleDbDataAdapter(str, con);
+            da.Fill(ds);
+            DataRow dr;
+            //***********************************************
+            dr = ds.Tables[0].NewRow();
+            dr.Table.Columns[0].ColumnName = "0";
+            dr.Table.Columns[1].ColumnName = "1";
+            //ds.Tables[0].Rows.InsertAt(dr, 0);
+            ds.Tables[0].AcceptChanges();
+
+            ddl.DataSource = ds.Tables[0];
+            ddl.DataValueField = "0";
+            ddl.DataTextField = "1";
+            ddl.DataBind();
+
+        }
+
+        public DataSet fillDS(string str)
+        {
+            cmd = new SqlCommand(str, con);
+            if (con.State == 0)
+            {
+                con.Open();
+            }
+            DataSet ds = new DataSet();
+            da = new SqlDataAdapter(str, con);
+            da.Fill(ds);
+            return ds;
+        }
+
+        public string srno(string str)
+        {
+            string a = "";
+            try
+            {
+                if (con.State == 0)
+                {
+                    con.Open();
+                }
+                cmd = new SqlCommand(str, con);
+                //con.Open();
+                a = cmd.ExecuteScalar().ToString();
+                return a;
+            }
+            catch (Exception ex)
+            {
+                return a;
+
+
+            }
+
+        }
     }
 }

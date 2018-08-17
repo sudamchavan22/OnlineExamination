@@ -76,7 +76,11 @@
 
                 </strong>
                 <br />
-            </td>
+                 <br class="auto-style4" />
+                <asp:Button ID="lbtn_StudeReg" runat="server" CssClass="auto-style4" PostBackUrl="~/frmStudRegistration.aspx" Text="Student Registration"/>
+                <br />
+
+                           </td>
             <td style="vertical-align:top; background-color: #FFFFFF;"><asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
           
