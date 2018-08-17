@@ -24,7 +24,7 @@
         }
         .auto-style2 {
             width: 234px;
-            vertical-align:top;
+            vertical-align: top;
             text-align: center;
         }
         .auto-style3 {
@@ -47,7 +47,7 @@
         }
         </style>
 </head>
-<body style="background-image: url('/images/1.jpg');background-size:cover;">
+<body style="background-image: url('images/1.jpg');background-size:cover;">
     <form id="form1" runat="server">
         <div>
             <asp:Image ID="imgbanner" runat="server" ImageUrl="~/images/banner.jpg" Width="100%" />

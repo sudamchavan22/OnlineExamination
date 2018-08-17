@@ -87,9 +87,21 @@
     <hr />
     <br />
         <table class="auto-style6" __designer:mapid="4cd">
+              <tr __designer:mapid="4ce">
+        <td class="auto-style24" style="vertical-align: top" __designer:mapid="4cf"><strong>Class </strong>:- </td>
+        <td colspan="4" style="vertical-align: top" __designer:mapid="4d0" class="auto-style32"> 
+
+            <asp:DropDownList ID="lstClass" AutoPostBack="true" OnSelectedIndexChanged="lstClass_SelectedIndexChanged" runat="server" CssClass="auto-style33" Height="35px" Width="265px">
+            </asp:DropDownList>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="DropDownList1" Display="Dynamic" ErrorMessage="Select Subject first." ForeColor="red" ValidationGroup="AddQuestion" InitialValue="--Select Subject--"></asp:RequiredFieldValidator>
+        </td>
+        <td style="vertical-align: top" __designer:mapid="4d0" class="auto-style32"> 
+            </td>
+    </tr>
     <tr __designer:mapid="4ce">
         <td class="auto-style24" style="vertical-align: top" __designer:mapid="4cf"><strong>Subject </strong>:- </td>
         <td colspan="4" style="vertical-align: top" __designer:mapid="4d0" class="auto-style32"> 
+
             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="auto-style33" Height="35px" Width="265px">
             </asp:DropDownList>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="DropDownList1" Display="Dynamic" ErrorMessage="Select Subject first." ForeColor="red" ValidationGroup="AddQuestion" InitialValue="--Select Subject--"></asp:RequiredFieldValidator>

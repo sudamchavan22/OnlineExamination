@@ -76,7 +76,7 @@ namespace OnlineExamination
             examid = Convert.ToInt32(Session["examid"].ToString());
             ds = new DataSet();
             ds = db.SelectExamOnID(examid);
-            subjectID=(string)ds.Tables[0].Rows[0]["subjects"];
+            subjectID = ds.Tables[0].Rows[0]["sbid"].ToString();
             ListView1.DataSource = db.GetSubjectName(subjectID);
             ListView1.DataBind();
             return subjectID;

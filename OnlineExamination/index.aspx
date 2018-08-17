@@ -17,7 +17,7 @@
         }
          </style>
 </head>
-<body style="background-image: url('/images/max.jpg');background-size:cover;">
+<body style="background-image: url('images/max.jpg');background-size:cover;">
     <form id="form1" runat="server" >
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
          <div class="menu">

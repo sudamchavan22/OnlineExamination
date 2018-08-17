@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace OnlineExamination
 {
@@ -21,7 +22,6 @@ namespace OnlineExamination
             db = new DBOperations();
             if (!IsPostBack)
             {
-                
                 SelectedOption();
                 loadData();
             }
@@ -32,11 +32,13 @@ namespace OnlineExamination
         {
             GridView1.DataSource = db.selectExamDT();
             GridView1.DataBind();
-            CheckBoxList1.DataSource = db.AllSubject();
-            CheckBoxList1.DataTextField = "subject_name";
-            CheckBoxList1.DataValueField = "sbid";
-            CheckBoxList1.DataBind();
-            
+            lstClass.DataSource = db.getClassList();
+            lstClass.DataTextField = "className";
+            lstClass.DataValueField = "classId";
+            lstClass.DataBind();
+            lstClass.Items.Insert(0, "--Select Class--");
+            lstClass.SelectedIndex = 0;
+            lstSubject.Items.Insert(0, "--Select Subject--");
         }
         protected void rblOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -58,59 +60,56 @@ namespace OnlineExamination
                    break;
                
         }
+           loadData();
 
         }
         //where date='"+txtUpdateExamD.Text+"'", con);
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            string subjects = SelectedSubjects();
-             if (subjects != null)
-                {
-            int id = Convert.ToInt32(Session["id"].ToString());
-            int count=db.InsertOrUpdateExamTime(id,txtUpdateExamD.Text,txtUpdateST.Text,txtUpdateET.Text,subjects);
-            if(count>0) 
-                Response.Write("<script>alert('Update Successfully!')</script>");
-                loadData();
-                }
-             else
-                 Response.Write("<script>alert('Select any 3 Subjects!')</script>");
-           
+            SetExam();
         }
 
         protected void btnSet_Click(object sender, EventArgs e)
         {
-            int countSubject=SelectedSubCount();
-            if (countSubject == 3)
-            {
-                string subjects = SelectedSubjects();
-                int count = db.InsertOrUpdateExamTime(null, txtExamDate.Text, txtStartTime.Text, txtEndTime.Text, subjects);
-
-                    if (count > 0)
-                        Response.Write("<script>alert('Done!')</script>");
-                    loadData();
-                }
-                 else
-                Response.Write("<script>alert('Select any 3 Subjects!')</script>");
+            SetExam();
         }
 
-        private string SelectedSubjects()
+        private void SetExam()
         {
-            string subjects = null;
-            
-            foreach (ListItem li in CheckBoxList1.Items)
+            int sbid = 0, createdBy = Convert.ToInt32(Session["cid"]), count = 0;
+            string selectedQue = string.Empty;
+            Hashtable htQuestions = new Hashtable();
+            if (Session["setQuestions"] != null)
+                htQuestions = (Hashtable)Session["setQuestions"];
+            foreach (int key in htQuestions.Keys)
             {
-                if (li.Selected)
-                {
-                    subjects +=li.Value.ToString() + ", ";
-                }
+                sbid = key;
+                selectedQue = htQuestions[key].ToString();
+                count = db.InsertOrUpdateExamTime(null, txtExamDate.Text, txtStartTime.Text, txtEndTime.Text, createdBy, sbid, selectedQue, Convert.ToInt32(txtMarks.Text));
             }
-            if (subjects != null)
-            {
-                subjects = subjects.Substring(0, subjects.Length - 2);
-                              
-            }
-           return subjects;
+            if (count > 0)
+                Response.Write("<script>alert('Done!')</script>");
+            loadData();
         }
+
+        //private string SelectedSubjects()
+        //{
+        //    string subjects = null;
+            
+        //    foreach (ListItem li in CheckBoxList1.Items)
+        //    {
+        //        if (li.Selected)
+        //        {
+        //            subjects +=li.Value.ToString() + ", ";
+        //        }
+        //    }
+        //    if (subjects != null)
+        //    {
+        //        subjects = subjects.Substring(0, subjects.Length - 2);
+                              
+        //    }
+        //   return subjects;
+        //}
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -149,6 +148,88 @@ namespace OnlineExamination
             if (count == 3)
                 count = 3;
             return count;
+            
+        }
+
+        protected void lstClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstClass.SelectedIndex > 0)
+            {
+                lstSubject.DataSource = db.AllSubject(Convert.ToInt32(lstClass.SelectedValue));
+                lstSubject.DataTextField = "subject_name";
+                lstSubject.DataValueField = "sbid";
+                lstSubject.DataBind();
+                lstClass.Enabled = false;
+            }
+                lstSubject.Items.Insert(0, "--Select Subject--");
+        }
+
+        protected void lstSubject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstSubject.SelectedIndex > 0)
+                loadQuestions(Convert.ToInt32(lstSubject.SelectedValue));
+            else
+                loadQuestions(0);
+        }
+        private void loadQuestions(int sbid) {
+            gridQuestions.DataSource = db.RetriveQuetions(sbid);
+            gridQuestions.DataBind();
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+
+            DataTable dt = new DataTable();
+            Hashtable htQuestions = new Hashtable();
+            Hashtable htDisplaySb = new Hashtable();
+            string q_ids = string.Empty,sbName=lstSubject.SelectedItem.Text;
+            int sbid = 0,counter=0;
+            foreach (GridViewRow row in gridQuestions.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    CheckBox chkRow = (row.Cells[0].FindControl("cbSelect") as CheckBox);
+                    if (chkRow.Checked)
+                    {
+                        sbid = Convert.ToInt32((row.Cells[2].FindControl("hfsbid") as HiddenField).Value);
+                        q_ids += (row.Cells[2].FindControl("hfQuestionId") as HiddenField).Value + ",";
+                        counter++;
+                    }
+                }
+            }
+            if (q_ids.Length > 0)
+            {
+                q_ids = q_ids.Remove(q_ids.Length - 1);
+
+                if (Session["setQuestions"] != null)
+                    htQuestions = (Hashtable)Session["setQuestions"];
+                if (Session["htDisplaySb"] != null)
+                    htDisplaySb = (Hashtable)Session["htDisplaySb"];
+                
+
+                if (htQuestions.Contains(sbid))
+                    htQuestions.Remove(sbid);
+
+                if (htDisplaySb.Contains(sbName))
+                    htDisplaySb.Remove(sbName);
+
+                    htDisplaySb.Add(sbName, counter);
+                    htQuestions.Add(sbid, q_ids);
+
+               
+                Session["setQuestions"] = htQuestions;
+                 Session["htDisplaySb"] = htDisplaySb;
+                
+                gridSelectedSubject.DataSource=htDisplaySb;
+                gridSelectedSubject.DataBind();
+
+                
+            }
+            else
+                Response.Write("<script>alert('Please select Questions!')</script>");
+            //gvSelected.DataSource = dt;
+            //gvSelected.DataBind();
+
             
         }
    

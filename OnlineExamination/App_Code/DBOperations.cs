@@ -33,46 +33,62 @@ namespace OnlineExamination
         //Insert/Update/Delete Exam of Details
         public DataSet selectExamDT()
         {
-            da = new SqlDataAdapter("select ROW_NUMBER() OVER(ORDER BY date desc)RowNum,examid,convert(varchar(10),date,101)date,start_time,end_time,subjects from tblExamDateTime where date>=FORMAT(Getdate(),'yyyy-MM-dd') order by start_time", con);
-            return LoadExamOnID();
-        }
-        private DataSet LoadExamOnID()
+           // string str="select ROW_NUMBER() OVER(ORDER BY date desc)RowNum,examid,convert(varchar(10),date,101)date,start_time,end_time,subjects from tblExa"+
+           //+"mDateTime where date>=FORMAT(Getdate(),'yyyy-MM-dd') order by start_time"
+           
+            return LoadExamOnID(null);
+        }   
+        private DataSet LoadExamOnID(int? examId)
         {
+            cmd = new SqlCommand("Sp_GetExamDetails", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@examId", examId);
+            da = new SqlDataAdapter(cmd);
             ds = new DataSet();
             da.Fill(ds, "tblExamDateTime");
             return ds;
         }
         public DataSet SelectExamOnID(int id)
         {
-            da = new SqlDataAdapter("select convert(varchar(10),date,101)date,start_time,end_time,subjects from tblExamDateTime where examid=" + id, con);
-
-            return LoadExamOnID();
+           // da = new SqlDataAdapter("select convert(varchar(10),date,101)date,start_time,end_time,subjects from tblExamDateTime where examid=" + id, con);
+            return LoadExamOnID(id);
         }
-        public int InsertOrUpdateExamTime(int? id, string date, string st, string et, string subjects)
+        public int InsertOrUpdateExamTime(int? id, string date, string st, string et, int createdBy, int sbid, string qids, int marks)
         {
             int count = 0;
             con.Open();
-            if (id != null)
-            {
-                cmd = new SqlCommand("update tblExamDateTime set date=@date, start_time=@start_time, end_time=@end_time, subjects=@subjects where examid=" + id, con);
-                cmd.Parameters.AddWithValue("@date", date);
-                cmd.Parameters.AddWithValue("@start_time", st);
-                cmd.Parameters.AddWithValue("@end_time", et);
-                cmd.Parameters.AddWithValue("@subjects", subjects);
-                count = cmd.ExecuteNonQuery();
+            cmd = new SqlCommand("Sp_InsertOrUpdateExamTime", con);
+            cmd.CommandType=CommandType.StoredProcedure;
+             cmd.Parameters.AddWithValue("@examid", id);
+            cmd.Parameters.AddWithValue("@date", date);
+            cmd.Parameters.AddWithValue("@start_time", st);
+            cmd.Parameters.AddWithValue("@end_time", et);
+            cmd.Parameters.AddWithValue("@createdBy", createdBy);
+            cmd.Parameters.AddWithValue("@sbid", sbid);
+            cmd.Parameters.AddWithValue("@qids", qids);
+            cmd.Parameters.AddWithValue("@marks", marks);
+            count = cmd.ExecuteNonQuery();
+            //if (id != null)
+            //{
+            //    cmd = new SqlCommand("update tblExamDateTime set date=@date, start_time=@start_time, end_time=@end_time, subjects=@subjects where examid=" + id, con);
+            //    cmd.Parameters.AddWithValue("@date", date);
+            //    cmd.Parameters.AddWithValue("@start_time", st);
+            //    cmd.Parameters.AddWithValue("@end_time", et);
+            //    cmd.Parameters.AddWithValue("@subjects", subjects);
+            //    count = cmd.ExecuteNonQuery();
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
 
-                cmd = new SqlCommand("insert into tblExamDateTime(date,start_time,end_time,subjects) valueS(@date,@start_time,@end_time,@subjects)", con);
-                cmd.Parameters.AddWithValue("@date", date);
-                cmd.Parameters.AddWithValue("@start_time", st);
-                cmd.Parameters.AddWithValue("@end_time", et);
-                cmd.Parameters.AddWithValue("@subjects", subjects);
-                count = cmd.ExecuteNonQuery();
+            //    cmd = new SqlCommand("insert into tblExamDateTime(date,start_time,end_time,subjects) valueS(@date,@start_time,@end_time,@subjects)", con);
+            //    cmd.Parameters.AddWithValue("@date", date);
+            //    cmd.Parameters.AddWithValue("@start_time", st);
+            //    cmd.Parameters.AddWithValue("@end_time", et);
+            //    cmd.Parameters.AddWithValue("@subjects", subjects);
+            //    count = cmd.ExecuteNonQuery();
 
-            }
+            //}
             con.Close();
             return count;
 
@@ -187,7 +203,8 @@ namespace OnlineExamination
         }
         public DataSet ExamDate(string date)
         {
-            da = new SqlDataAdapter("select examid,convert(varchar(10),date,101)date,start_time,end_time from tblExamDateTime where date='"+date+"'", con);
+            //da = new SqlDataAdapter("select examid,convert(varchar(10),date,101)date,start_time,end_time from tblExamDateTime where date>='"+date+"' and end_time>'"+ (DateTime.Now).ToShortTimeString()+"'", con);
+            da = new SqlDataAdapter("select examid,convert(varchar(10),date,101)date,start_time,end_time from tblExamDateTime where date='" + date + "' and end_time>(SELECT CONVERT (time, SYSDATETIME())) order by start_time ", con);
             ds = new DataSet();
             da.Fill(ds, "tblExamDateTime");
             if (ds.Tables[0].Rows.Count > 0)
@@ -362,15 +379,15 @@ namespace OnlineExamination
         }
 
         //Add New Subject and Retrive 
-        public int NewSubject(string Subject_Name)
+        public int NewSubject(string Subject_Name,int classId)
         {
             int count = 0;
-            da = new SqlDataAdapter("select * from tblSubject where subject_name='" + Subject_Name + "'", con);
+            da = new SqlDataAdapter("select * from tblSubject where subject_name='" + Subject_Name + "' and classId="+classId, con);
             ds=new DataSet();
             da.Fill(ds,"tblSubject");
             if (ds.Tables[0].Rows.Count == 0)
             {
-                cmd = new SqlCommand("insert into tblSubject(subject_name) values('" + Subject_Name + "')", con);
+                cmd = new SqlCommand("insert into tblSubject(subject_name,classId) values('" + Subject_Name + "',"+classId+")", con);
                 con.Open();
                 count = cmd.ExecuteNonQuery();
                 con.Close();
@@ -379,13 +396,60 @@ namespace OnlineExamination
             }
             return count;
         }
-        public DataSet AllSubject()
+        public DataSet AllSubject(int classId)
         {
             ds = new DataSet();
-            da = new SqlDataAdapter("select sbid,subject_name from tblSubject",con);
+            da = new SqlDataAdapter("select sbid,subject_name from tblSubject where classId="+classId,con);
             da.Fill(ds,"tblSubject");
             return ds;
         }
+        public List<ClassDto> getClassList()
+        {
+            List<ClassDto> lstClass = new List<ClassDto>();
+             da = new SqlDataAdapter("select * from tbl_Class_Master order by classId", con);
+            ds = new DataSet();
+            da.Fill(ds, "tbl_Class_Master");
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach(DataRow row in ds.Tables[0].Rows ){
+                ClassDto classdto = new ClassDto();
+                classdto.classId=Convert.ToInt32(row[0]);
+                classdto.className=row[1].ToString();
+                lstClass.Add(classdto);
+                }
+
+            }
+            return lstClass;
+        }
+        public bool AddClass(int classId,string className)
+        {
+            bool result = false;
+            if (classId == 0)
+            {
+                da = new SqlDataAdapter("select * from tbl_Class_Master where className='" + className + "'", con);
+                ds = new DataSet();
+                da.Fill(ds, "tbl_Class_Master");
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    cmd = new SqlCommand("insert into tbl_Class_Master(className) values('" + className + "')", con);
+                    con.Open();
+                    int count = cmd.ExecuteNonQuery();
+                    con.Close();
+                    if (count > 0)
+                        result = true;
+                }
+            }
+            else {
+                cmd = new SqlCommand("update tbl_Class_Master set className='" + className + "' where classId="+classId, con);
+                con.Open();
+                int count = cmd.ExecuteNonQuery();
+                con.Close();
+                if (count > 0)
+                    result = true;
+            }
+            return result;
+        }
+
 
 
 
