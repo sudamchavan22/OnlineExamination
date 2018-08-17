@@ -103,7 +103,6 @@
     <Compile Include="App_Code\DBOperations.cs" />
     <Compile Include="clientService.asmx.cs">
       <DependentUpon>clientService.asmx</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ExaminationController.Master.cs">
       <DependentUpon>ExaminationController.Master</DependentUpon>
@@ -202,7 +201,6 @@
     <Compile Include="App_Code\SolvedQuestions.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
