@@ -58,7 +58,7 @@ namespace OnlineExamination
             if (loginInfo[0].LoginState)
             {
                 Session["cid"] = loginInfo[0].cid;
-                Response.Redirect("~/frmAddQuestions.aspx");
+                Response.Redirect("~/frmSubjects.aspx");
             }
             else
                 Label1.Text="Wrong User ID or Password";

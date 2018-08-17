@@ -18,17 +18,26 @@ namespace OnlineExamination
             if (!IsPostBack)
                 loadData();
         }
-
+        private void LoadGrid(int sbid)
+        {
+            GridView1.DataSource = db.RetriveQuetions(sbid);
+            GridView1.DataBind();
+        }
         private void loadData()
         {
-            GridView1.DataSource = db.RetriveAllQuetions();
-            GridView1.DataBind();
-            DropDownList1.DataSource = DropDownList2.DataSource = db.AllSubject();
-           DropDownList1.DataTextField= DropDownList2.DataTextField = "subject_name";
-           DropDownList1.DataValueField = DropDownList2.DataValueField = "sbid";
-            DropDownList1.DataBind();
-            DropDownList2.DataBind();
-            DropDownList1.Items.Insert(0, "--Select Subject--"); DropDownList2.Items.Insert(0, "All");
+            lstClass.Items.Clear();
+            lstClass.DataSource = db.getClassList();
+            lstClass.DataTextField = "className";
+            lstClass.DataValueField = "classId";
+            lstClass.DataBind();
+            lstClass.Items.Insert(0, "--Select Class--");
+            lstClass.SelectedIndex = 0;
+            DropDownList1.Items.Clear();
+            
+            DropDownList1.Items.Insert(0, "--Select Subject--");
+            DropDownList2.Items.Clear();
+            DropDownList2.Items.Insert(0, "--Select Subject--");
+          
             GridView1.PageIndex = 0;
         }
         
@@ -41,7 +50,7 @@ namespace OnlineExamination
         if (count > 0)
             Response.Write("<script>alert('Question Added Successfully!')</script>");
         GetControlVidible();
-        loadData();
+        LoadGrid(sbid);
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -87,7 +96,8 @@ namespace OnlineExamination
             if (count > 0)
                 Response.Write("<script>alert('Question updated successfully..!')</script>");
             GetControlVidible();
-            loadData();
+            LoadGrid(sbid);
+            //loadData();
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -123,5 +133,21 @@ namespace OnlineExamination
             FilterRecords();
         }
 
+        protected void lstClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstClass.SelectedIndex > 0)
+            {
+                DropDownList1.Items.Clear();
+                DropDownList2.Items.Clear();
+                DropDownList1.DataSource = DropDownList2.DataSource = db.AllSubject(Convert.ToInt32(lstClass.SelectedValue));
+                DropDownList1.DataTextField = DropDownList2.DataTextField = "subject_name";
+                DropDownList1.DataValueField = DropDownList2.DataValueField = "sbid";
+                DropDownList1.DataBind();
+                DropDownList2.DataBind();
+                DropDownList1.Items.Insert(0, "--Select Subject--");
+                DropDownList2.Items.Insert(0, "--Select Subject--");
+            }
+
+        }
     }
 }

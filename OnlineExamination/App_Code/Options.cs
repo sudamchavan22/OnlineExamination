@@ -13,4 +13,15 @@ namespace OnlineExamination
         public int SolvQ { get; set; }
         //update this by ram
       }
+    public class ClassDto {
+        public int classId { get; set; }
+        public string className { get; set; }
+    }
+
+    public class SubjectDto
+    {
+    public int subjectId { get; set; }
+    public string subjectName { get; set; }
+
+    }
 }
