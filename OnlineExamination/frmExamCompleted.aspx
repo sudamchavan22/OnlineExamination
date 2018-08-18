@@ -18,7 +18,9 @@
         <tr><th><h1 align="center" class="auto-style5">Exam Completed...!</h1>
             
                         </th></tr>
-        <tr><td><hr /></td></tr>
+        <tr><td><hr /><h2>Congratulations you have successuly completed test..</h2>
+            <h3><asp:Label runat="server" ID="lblResult"></asp:Label></h3>
+            </td></tr>
           <tr align="center"><td style="vertical-align: top; text-align: left; font-size: 18px; font-weight: normal;">
             <hr />
             </td></tr>
