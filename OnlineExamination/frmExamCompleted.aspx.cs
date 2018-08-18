@@ -11,7 +11,7 @@ namespace OnlineExamination
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblResult.Text=Session["StudentResult"].ToString();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace OnlineExamination
 
         private void fillctrl()
         {
-            str = "select srno,class from tbl_class_Master";
+            str = "select classId,className from tbl_class_Master";
             db.fillCbo(str, ddl_Class);
             ddl_Class.Items.Insert(0, new ListItem("--Select Class--", "0"));
 
@@ -89,7 +89,7 @@ namespace OnlineExamination
             str = "Select Getdate()";
             string regdate = db.srno(str);
             DateTime _date = Convert.ToDateTime(regdate);
-            string entrdate = _date.ToString("dd/MM/yyyy");
+            string entrdate = _date.ToString("MM/dd/yyyy");
 
 
             str = "";
@@ -105,7 +105,7 @@ namespace OnlineExamination
             str += "'Y','N'";
 
             int count = 0;
-           // count = db.stud_Reg(str);
+            count = db.stud_Reg(str);
             if (count > 0)
             {
                 Response.Write("<script>alert('Student Register Successfully!')</script>");

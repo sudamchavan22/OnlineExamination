@@ -152,6 +152,10 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtUpdateST" Display="Dynamic" ErrorMessage="Enter start time" ForeColor="Red" ValidationGroup="Update"></asp:RequiredFieldValidator>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtUpdateET" Display="Dynamic" ErrorMessage="Enter end time" ForeColor="Red" ValidationGroup="Update"></asp:RequiredFieldValidator>
                 <br />
+            Enter Marks for question
+            <br />
+            <asp:TextBox ID="txtUpdateMarks" runat="server" TextMode="Number" Width="56px"></asp:TextBox>
+                <br />
             </span>
             <br />
             <asp:Button ID="btnUpdate" runat="server" CssClass="btn-lg" Text="Update" OnClick="btnUpdate_Click" ValidationGroup="Update" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,7 @@ namespace OnlineExamination
     {
         DBOperations db;
         DataSet ds;
-        int rowNo, TotalMarks=0, index, examid, stud_id;
+        int rowNo,marks=0, TotalMarks=0, index, examid, stud_id,queCount=0;
         string ans,strmin,strsec;
         List<int> SolvIndex, UnSolvIndex;
         List<SolvedQuestions> storeSelectedOptions, Temp;
@@ -29,7 +30,14 @@ namespace OnlineExamination
             Temp = new List<SolvedQuestions>();
             obj = new SolvedQuestions();
             UnSolvIndex = new List<int>();
-         
+           
+           
+            examid = Convert.ToInt32(Session["examid"].ToString());
+            if (ViewState["Q_Count"] != null)
+                queCount = Convert.ToInt32(ViewState["Q_Count"].ToString());
+              if (ViewState["marks"] != null)
+                marks = Convert.ToInt32(ViewState["marks"].ToString());
+            
             if (!IsPostBack)
             {
                 if (Session["stud_id"] == null)
@@ -39,8 +47,9 @@ namespace OnlineExamination
                     loadstudentDetails();
                     Session["storeSelectedOptions"] = null;
                     ViewState["rowNo"] = rowNo = 1; ViewState["TotalMarks"] = TotalMarks = 0;
-                    DataSet ds1 = db.RetriveAllQuetions();
-                    ViewState["Q_Count"] = ds1.Tables[0].Rows.Count;
+                    DataSet ds1 = db.RetriveAllQuetions(examid);
+                    ViewState["marks"] = marks = Convert.ToInt32(ds1.Tables[0].Rows[0]["marks"].ToString());
+                    ViewState["Q_Count"] = queCount=ds1.Tables[0].Rows.Count;
                     loadQuestions();
                 }
             }
@@ -62,7 +71,8 @@ namespace OnlineExamination
         {
             string subjectID = GetSubjectsID();
             rowNo = Convert.ToInt32(ViewState["rowNo"].ToString());
-            lvIndexOfQ.DataSource = db.RetriveAllQuetions(null,null,subjectID);
+            //lvIndexOfQ.DataSource = db.RetriveAllQuetions(null,null,subjectID);
+            lvIndexOfQ.DataSource = db.RetriveAllQuetions(null, null,subjectID);
             lvIndexOfQ.DataBind();
             DataList1.DataSource = db.RetriveAllQuetions(null, rowNo,subjectID);
             DataList1.DataBind();
@@ -73,10 +83,26 @@ namespace OnlineExamination
         private string GetSubjectsID()
         {
             string subjectID = null;
-            examid = Convert.ToInt32(Session["examid"].ToString());
+           
             ds = new DataSet();
             ds = db.SelectExamOnID(examid);
-            subjectID = ds.Tables[0].Rows[0]["sbid"].ToString();
+
+    //       var query =
+    //from product in ds.Tables[0].AsEnumerable().Distinct().Select(p=>p.Field<Int32>("sbid")).GroupBy(;
+
+    //subjectID=string.Join(',',ds.Tables[0].AsEnumerable().Distinct().Select(p=>p.Field<string>("sbid")))
+            List<string> sbids=new List<string>();
+            foreach (DataRow q in ds.Tables[0].Rows)
+            {
+               if(!sbids.Contains(q["sbid"].ToString()))
+                   sbids.Add(q["sbid"].ToString());
+                
+            }
+            foreach (string i in sbids) {
+                subjectID += i + ",";
+            }
+            subjectID = subjectID.Remove(subjectID.Length - 1);
+            //subjectID = string.Join(',',sbids.ToList().Select());
             ListView1.DataSource = db.GetSubjectName(subjectID);
             ListView1.DataBind();
             return subjectID;
@@ -88,7 +114,8 @@ namespace OnlineExamination
             RadioButtonList rblQstList = (RadioButtonList)e.Item.FindControl("rblQstList");
             HiddenField hfq_id = (HiddenField)e.Item.FindControl("hfq_id");
 
-            DataSet ds = db.RetriveAllQuetions(Convert.ToInt32(hfq_id.Value), null,null);
+            //DataSet ds = db.RetriveAllQuetions(Convert.ToInt32(hfq_id.Value), null,null);
+            DataSet ds = db.RetriveAllQuetions(Convert.ToInt32(hfq_id.Value),null,null);
             int count = ds.Tables[0].Rows.Count;
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
@@ -167,7 +194,7 @@ namespace OnlineExamination
                                         if (item.rowNo == rowNo)
                                         {
                                             addStatus = true;
-                                            TotalMarks -= 1;
+                                            TotalMarks -= marks;
                                             index = Temp.IndexOf(item);
                                             Temp.RemoveAt(index);
                                             Session["storeSelectedOptions"] = Temp;
@@ -191,7 +218,7 @@ namespace OnlineExamination
                     if (rblQstList.SelectedValue == ans && addStatus == false)
                     {
                         ansStatus = true;
-                        TotalMarks += 1;
+                        TotalMarks += marks;
 
                     }
 
@@ -397,7 +424,7 @@ namespace OnlineExamination
            
             unsolveCount = unsolve.Count;
             SolveCount = solve.Count;
-            UnAttempt = 60 - (unsolveCount + SolveCount);
+            UnAttempt = queCount - (unsolveCount + SolveCount);
             btnSUnsolve.Text = unsolveCount.ToString();
             btnSsolve.Text = SolveCount.ToString();
             btnSUnAttempted.Text = UnAttempt.ToString();
@@ -412,8 +439,8 @@ namespace OnlineExamination
             TotalMarks = Convert.ToInt32(ViewState["TotalMarks"].ToString());
             examid = Convert.ToInt32(Session["examid"].ToString());
             stud_id = Convert.ToInt32(Session["stud_id"].ToString());
-            TotalMarks = Convert.ToInt32(ViewState["TotalMarks"].ToString());
             int count = db.Storeresult(examid, stud_id, time, TotalMarks);
+            Session["StudentResult"] = " You score " + TotalMarks + " out of " + queCount * marks;
             if (count > 0)
                 Response.Redirect("~/frmExamCompleted.aspx");
         }

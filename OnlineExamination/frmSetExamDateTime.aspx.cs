@@ -66,7 +66,13 @@ namespace OnlineExamination
         //where date='"+txtUpdateExamD.Text+"'", con);
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            SetExam();
+            int createdBy = Convert.ToInt32(Session["cid"]), count = 0, sbid = 0;
+            int examId = Convert.ToInt32(Session["id"] != null ? Session["id"] : null);
+            string selectedQue = string.Empty;
+            count = db.InsertOrUpdateExamTime(examId, txtExamDate.Text, txtStartTime.Text, txtEndTime.Text, createdBy, sbid, selectedQue, Convert.ToInt32(txtUpdateMarks.Text), false);
+            if (count > 0)
+                Response.Write("<script>alert('Done!')</script>");
+            loadData();
         }
 
         protected void btnSet_Click(object sender, EventArgs e)
@@ -76,7 +82,8 @@ namespace OnlineExamination
 
         private void SetExam()
         {
-            int sbid = 0, createdBy = Convert.ToInt32(Session["cid"]), count = 0;
+            int createdBy = Convert.ToInt32(Session["cid"]), count = 0, sbid =0;
+            bool isExamId = false;
             string selectedQue = string.Empty;
             Hashtable htQuestions = new Hashtable();
             if (Session["setQuestions"] != null)
@@ -85,8 +92,10 @@ namespace OnlineExamination
             {
                 sbid = key;
                 selectedQue = htQuestions[key].ToString();
-                count = db.InsertOrUpdateExamTime(null, txtExamDate.Text, txtStartTime.Text, txtEndTime.Text, createdBy, sbid, selectedQue, Convert.ToInt32(txtMarks.Text));
+                count = db.InsertOrUpdateExamTime(null, txtExamDate.Text, txtStartTime.Text, txtEndTime.Text, createdBy, sbid, selectedQue, Convert.ToInt32(txtMarks.Text),isExamId);
+                isExamId = true;
             }
+            
             if (count > 0)
                 Response.Write("<script>alert('Done!')</script>");
             loadData();
@@ -121,7 +130,7 @@ namespace OnlineExamination
             Session["id"]=id;
            ds = new DataSet();
            ds=db.SelectExamOnID(id);
-           txtUpdateExamD.Text = ds.Tables[0].Rows[0]["date"].ToString();
+           txtUpdateExamD.Text =Convert.ToDateTime(ds.Tables[0].Rows[0]["date"].ToString()).ToShortDateString();
            txtUpdateST.Text = ds.Tables[0].Rows[0]["start_time"].ToString();
            txtUpdateET.Text = ds.Tables[0].Rows[0]["end_time"].ToString();
              
