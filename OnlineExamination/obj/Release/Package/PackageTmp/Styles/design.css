@@ -1,0 +1,43 @@
+﻿body { 
+}
+.btn {
+border-radius:20px;font-size: large;
+}
+.radius {border-radius:20px; background-color:white;color:black;height:300px;width:300px;margin-top:4%;
+}
+.login {border-radius:20px; background-color:white;color:black;
+}
+.menu {
+
+vertical-align:top;float:right;font-size:large;margin-right:5px
+}
+.modalBackground{background-color: Black;filter: alpha(opacity=60);opacity: 0.6;}
+.formControl {
+border-radius:10px;
+}
+.adjustWidth {
+     width:100px;
+     height:30px;
+border-radius:10px;
+}
+
+  .auto-style4 {
+            font-size: large;
+            border-radius:10px;
+            width:100%;
+            height:40px;
+            background-color:ButtonShadow;
+            
+        }
+   .btn-lg {
+            font-size: large;
+            border-radius:10px;
+             background-color:ButtonShadow;
+    margin-left: 0px;
+    text-align: center;
+    color: #000000;
+}
+.txtControl {
+    width:300px;
+    height:24px;
+}

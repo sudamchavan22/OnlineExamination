@@ -65,3 +65,4 @@ F:\project\Online_Exam\OnlineExamination\OnlineExamination\bin\OnlineExamination
 F:\project\Online_Exam\OnlineExamination\OnlineExamination\obj\Debug\OnlineExamination.dll
 F:\project\Online_Exam\OnlineExamination\OnlineExamination\obj\Debug\OnlineExamination.pdb
 F:\project\Online_Exam\OnlineExamination\OnlineExamination\obj\Debug\OnlineExamination.csprojResolveAssemblyReference.cache
+F:\project\Online_Exam\OnlineExamination\OnlineExamination\bin\AjaxMin.dll

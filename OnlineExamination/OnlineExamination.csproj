@@ -197,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExaminationController.Master" />
+    <None Include="Properties\PublishProfiles\publishonlineexamination.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

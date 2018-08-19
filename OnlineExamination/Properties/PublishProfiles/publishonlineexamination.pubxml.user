@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>F:\project\publish</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>08/11/2018 23:23:34</publishTime>
+    </File>
+    <File Include="bin/AjaxMin.dll">
+      <publishTime>12/05/2013 03:55:36</publishTime>
+    </File>
+    <File Include="bin/OnlineExamination.dll">
+      <publishTime>08/19/2018 14:22:31</publishTime>
+    </File>
+    <File Include="CheckConnection.aspx">
+      <publishTime>08/11/2018 23:23:36</publishTime>
+    </File>
+    <File Include="ExaminationController.Master">
+      <publishTime>08/17/2018 23:38:49</publishTime>
+    </File>
+    <File Include="frmAddQuestions.aspx">
+      <publishTime>08/17/2018 23:38:49</publishTime>
+    </File>
+    <File Include="frmChangePwd.aspx">
+      <publishTime>08/11/2018 23:23:36</publishTime>
+    </File>
+    <File Include="frmExamCompleted.aspx">
+      <publishTime>08/11/2018 23:23:36</publishTime>
+    </File>
+    <File Include="frmInstructions.aspx">
+      <publishTime>08/17/2018 23:38:49</publishTime>
+    </File>
+    <File Include="frmNewController.aspx">
+      <publishTime>08/11/2018 23:23:36</publishTime>
+    </File>
+    <File Include="frmResult.aspx">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="frmSetExamDateTime.aspx">
+      <publishTime>08/17/2018 23:38:49</publishTime>
+    </File>
+    <File Include="frmStudRegistration.aspx">
+      <publishTime>08/16/2018 22:26:12</publishTime>
+    </File>
+    <File Include="frmSubjects.aspx">
+      <publishTime>08/17/2018 23:38:49</publishTime>
+    </File>
+    <File Include="frmTest.aspx">
+      <publishTime>08/17/2018 23:38:49</publishTime>
+    </File>
+    <File Include="images/1.jpg">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="images/back.png">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="images/background.PNG">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="images/banner.jpg">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="images/bg.jpg">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="images/max.jpg">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="index.aspx">
+      <publishTime>08/17/2018 23:38:49</publishTime>
+    </File>
+    <File Include="Instructions.xml">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="PrintResult.aspx">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="script/jquery.min.js">
+      <publishTime>08/13/2018 18:54:06</publishTime>
+    </File>
+    <File Include="script/SetExam.js">
+      <publishTime>08/17/2018 23:41:25</publishTime>
+    </File>
+    <File Include="Styles/design.css">
+      <publishTime>08/11/2018 23:23:37</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/19/2018 14:22:42</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
