@@ -17,8 +17,7 @@ namespace OnlineExamination
         public Boolean editflag = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-              db = new DBOperations();
-           // Page.ClientScript.RegisterStartupScript(GetType(), "none", "<script>executeAfter();</script>", false);
+            db = new DBOperations();
             if (!IsPostBack)
             {
                 setlocation();
@@ -193,7 +192,5 @@ namespace OnlineExamination
             divDGSlist.Style.Add("display", "none");
 
         }
-
-        
     }
 }
