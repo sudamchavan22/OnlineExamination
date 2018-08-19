@@ -229,7 +229,7 @@ namespace OnlineExamination
         //Retrive Result
         public DataSet ViewResult(string exam_date, int criteria)
         {
-            da = new SqlDataAdapter("select row_number() over(order by solved_time,ans desc)as RowNum, r.examid,s.name,s.email,e.date,r.ans,r.solved_time from tblResult r,tblExamDateTime e,tblStudents s where r.examid=e.examid and r.stud_id=s.stud_id and e.date='" + exam_date + "' and (convert(decimal(10,2),r.ans)/60*100)>=" + criteria, con);
+            da = new SqlDataAdapter("select row_number() over(order by solved_time,ans desc)as RowNum, r.examid,s.rollNo,s.name,e.date,r.ans,r.solved_time from tblResult r,tblExamDateTime e,tblStudents s where r.examid=e.examid and r.stud_id=s.stud_id and e.date='" + exam_date + "' and (convert(decimal(10,2),r.ans)/60*100)>=" + criteria, con);
             ds = new DataSet();
             da.Fill(ds, "tblResult");
             return ds;
@@ -344,31 +344,31 @@ namespace OnlineExamination
         }
 
         //Get Student Details and Store Result
-        public int AddNewStudentDetails(string name, string email)
+        public int AddNewStudentDetails(string userId, string pwd)
         {
             int count = 0, stud_id = 0;
             ds = new DataSet();
 
-            da = new SqlDataAdapter("select top(1) stud_id from tblStudents where name='" + name + "' and email='" + email + "'", con);
+            da = new SqlDataAdapter("select stud_id from tblStudents where userId='" + userId + "' and password='" + pwd + "'", con);
             da.Fill(ds, "tblStudents");
             if (ds.Tables[0].Rows.Count > 0)
             {
                 stud_id = Convert.ToInt32(ds.Tables[0].Rows[0]["stud_id"].ToString());
             }
-            else
-            {
-                cmd = new SqlCommand("insert into tblStudents(name,email) values('" + name + "','" + email + "')", con);
-                con.Open();
-                count = cmd.ExecuteNonQuery();
-                con.Close();
-                if (count > 0)
-                {
-                    ds = new DataSet();
-                    da = new SqlDataAdapter("select top(1) stud_id from tblStudents where name='" + name + "' order by stud_id desc;", con);
-                    da.Fill(ds, "tblStudents");
-                    stud_id = Convert.ToInt32(ds.Tables[0].Rows[0]["stud_id"].ToString());
-                }
-            }
+            //else
+            //{
+            //    cmd = new SqlCommand("insert into tblStudents(name,email) values('" + name + "','" + email + "')", con);
+            //    con.Open();
+            //    count = cmd.ExecuteNonQuery();
+            //    con.Close();
+            //    if (count > 0)
+            //    {
+            //        ds = new DataSet();
+            //        da = new SqlDataAdapter("select top(1) stud_id from tblStudents where name='" + name + "' order by stud_id desc;", con);
+            //        da.Fill(ds, "tblStudents");
+            //        stud_id = Convert.ToInt32(ds.Tables[0].Rows[0]["stud_id"].ToString());
+            //    }
+            //}
             return stud_id;
         }
         public int Storeresult(int examid, int stud_id, string solve_time, int ans)
@@ -382,18 +382,18 @@ namespace OnlineExamination
         }
         public DataSet StudentDetails(int stud_id)
         {
-            da = new SqlDataAdapter("select name,email from tblStudents where stud_id=" + stud_id, con);
+            da = new SqlDataAdapter("select name from tblStudents where stud_id=" + stud_id, con);
             ds = new DataSet();
             da.Fill(ds, "tblStudents");
             return ds;
         }
 
         //Login for Start exam
-        public bool ExamDoneChacking(string name, string email, int examid)
+        public bool ExamDoneChacking(string userId, int examid)
         {
             bool examStatus = true;
             ds = new DataSet();
-            da = new SqlDataAdapter("SELECT tblStudents.name FROM tblExamDateTime INNER JOIN tblResult ON tblExamDateTime.examid = tblResult.examid INNER JOIN tblStudents ON tblResult.stud_id = tblStudents.stud_id WHERE (tblStudents.name = '" + name + "') AND (tblStudents.email = '" + email + "') AND (tblExamDateTime.examid = " + examid + ")", con);
+            da = new SqlDataAdapter("SELECT tblStudents.name FROM tblExamDateTime INNER JOIN tblResult ON tblExamDateTime.examid = tblResult.examid INNER JOIN tblStudents ON tblResult.stud_id = tblStudents.stud_id WHERE (tblStudents.userId = '" + userId + "') AND (tblExamDateTime.examid = " + examid + ")", con);
             da.Fill(ds, "tblExamDateTime");
             if (ds.Tables[0].Rows.Count > 0)
                 examStatus = false;

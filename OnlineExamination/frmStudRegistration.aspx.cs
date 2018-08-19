@@ -13,7 +13,7 @@ namespace OnlineExamination
         DataSet ds;
         DBOperations db;
         string str;
-        char Eflag;
+        bool status = true;
         public Boolean editflag = false;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,14 +59,14 @@ namespace OnlineExamination
 
         protected void BtnSave_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(txt_StudSrno.Value) >0)
-            {
-                Eflag = 'E';
-            }
-            else
-            {
-                Eflag = 'A';
-                str = "Select UserID from tbl_Stud_Reg_Master where UserID ='" + txt_UserID.Text + "'";
+            //if (Convert.ToInt32(txt_StudSrno.Value) >0)
+            //{
+            //    Eflag = 'E';
+            //}
+            //else
+            //{
+            //    Eflag = 'A';
+                str = "select userId from tblStudents where userId ='" + txt_UserID.Text + "'";
                 string uid = db.srno(str);
                 if (uid== txt_UserID.Text)
                 {
@@ -74,7 +74,7 @@ namespace OnlineExamination
                     txt_UserID.Focus();
                     return;
                 }
-            }
+            //}
             int ddlclass = 0;
             if (ddl_Class.SelectedIndex > 0)
             {
@@ -87,29 +87,27 @@ namespace OnlineExamination
 
             
 
-            str = "Select Getdate()";
-            string regdate = db.srno(str);
-            DateTime _date = Convert.ToDateTime(regdate);
-            string entrdate = _date.ToString("MM/dd/yyyy");
-
-
+            //str = "Select Getdate()";
+            //string regdate = db.srno(str);
+            string regdate = DateTime.Now.ToShortDateString();
+            //DateTime _date = Convert.ToDateTime(regdate);
+          //string entrdate = _date.ToString("MM/dd/yyyy");
+         
             str = "";
-            str = "exec SP_INS_STUD_REG_MASTER ";
-            str += "'" + Eflag + "',";
-            str += ""+ txt_StudSrno.Value+",";
+            str = "exec SpWriteStudentDetails";
             str += "'" + txt_StudName.Text + "',";
             str += "" + ddlclass + ",";
             str += "" + txt_RollNo.Text + ",";
             str +="'"+txt_UserID.Text+"',";
-            str+="'"+txt_Passward.Text+"',";
-            str+="'"+ entrdate+"',";
-            str += "'Y','N'";
+            str +="'"+txt_Passward.Text+"',";
+            str += "'" + regdate + "',";
+          str += "'" + status + "'";
 
             int count = 0;
             count = db.stud_Reg(str);
             if (count > 0)
             {
-                Response.Write("<script>alert('Student Register Successfully!')</script>");
+                Response.Write("<script>alert('Successfuly Executed!')</script>");
             }
 
             editflag = false;
@@ -131,7 +129,8 @@ namespace OnlineExamination
         }
         private void filldg()
         {
-            str = "Select srno,studName,SClass,RollNo,UserID,passward, Format(regdate,'dd/MMM/yyyy')as regdate from tbl_Stud_Reg_Master where 1=1 ";
+            str = "select stud_id,name,classId,rollNo,userId,password,format(redDate,'dd/MM/yyyy')as regDate from tblStudent";
+           // str = "Select srno,studName,SClass,RollNo,UserID,passward, Format(regdate,'dd/MMM/yyyy')as regdate from tbl_Stud_Reg_Master where 1=1 ";
             db.fillgrid(DGVStudList, str);
 
 
@@ -180,13 +179,13 @@ namespace OnlineExamination
 
 
             str = "";
-            str += "Select * From tbl_Stud_Reg_Master Where srno=" + txt_StudSrno.Value;
+            str += "Select * From tblStudent Where stud_id=" + txt_StudSrno.Value;
             ds = db.fillDS(str);
 
-            ddl_Class.SelectedValue = ds.Tables[0].Rows[0]["SClass"].ToString();
-            txt_StudName.Text = ds.Tables[0].Rows[0]["studName"].ToString();
-            txt_RollNo.Text = ds.Tables[0].Rows[0]["RollNo"].ToString();
-            txt_UserID.Text = ds.Tables[0].Rows[0]["UserID"].ToString();
+            ddl_Class.SelectedValue = ds.Tables[0].Rows[0]["classId"].ToString();
+            txt_StudName.Text = ds.Tables[0].Rows[0]["name"].ToString();
+            txt_RollNo.Text = ds.Tables[0].Rows[0]["nollNo"].ToString();
+            txt_UserID.Text = ds.Tables[0].Rows[0]["userId"].ToString();
             txt_Passward.Text = ds.Tables[0].Rows[0]["passward"].ToString();
 
             divStudDetail.Style.Add("display", "block");

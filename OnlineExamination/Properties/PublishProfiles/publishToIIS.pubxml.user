@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>12/14/2013 22:34:02</publishTime>
+    </File>
+    <File Include="bin/AjaxControlToolkit.pdb">
+      <publishTime>12/14/2013 22:34:02</publishTime>
+    </File>
+    <File Include="bin/AjaxMin.dll">
+      <publishTime>12/05/2013 03:55:36</publishTime>
+    </File>
+    <File Include="bin/ar/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:03</publishTime>
+    </File>
+    <File Include="bin/cs/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:03</publishTime>
+    </File>
+    <File Include="bin/de/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:03</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.Edm.resources.dll">
+      <publishTime>12/05/2013 03:55:45</publishTime>
+    </File>
+    <File Include="bin/de/Microsoft.Data.OData.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/de/System.Spatial.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/es/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:03</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.Edm.resources.dll">
+      <publishTime>12/05/2013 03:55:45</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.Data.OData.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/es/System.Spatial.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/fr/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:03</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.Edm.resources.dll">
+      <publishTime>12/05/2013 03:55:45</publishTime>
+    </File>
+    <File Include="bin/fr/Microsoft.Data.OData.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/fr/System.Spatial.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/he/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:04</publishTime>
+    </File>
+    <File Include="bin/hi/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:04</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>12/05/2013 03:55:36</publishTime>
+    </File>
+    <File Include="bin/it/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:04</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.Edm.resources.dll">
+      <publishTime>12/05/2013 03:55:45</publishTime>
+    </File>
+    <File Include="bin/it/Microsoft.Data.OData.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/it/System.Spatial.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/ja/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:04</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.Edm.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/ja/Microsoft.Data.OData.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/ja/System.Spatial.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/ko/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:04</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.Edm.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/ko/Microsoft.Data.OData.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/ko/System.Spatial.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.Edm.dll">
+      <publishTime>12/05/2013 03:55:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Data.OData.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/Microsoft.WindowsAzure.Storage.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/nl/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:04</publishTime>
+    </File>
+    <File Include="bin/OnlineExamination.dll">
+      <publishTime>08/20/2018 02:01:53</publishTime>
+    </File>
+    <File Include="bin/OnlineExamination.pdb">
+      <publishTime>08/20/2018 02:01:53</publishTime>
+    </File>
+    <File Include="bin/pl/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:05</publishTime>
+    </File>
+    <File Include="bin/pt/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:04</publishTime>
+    </File>
+    <File Include="bin/ru/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:05</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.Edm.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/ru/Microsoft.Data.OData.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/ru/System.Spatial.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/System.Spatial.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/tr-TR/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:05</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:05</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/AjaxControlToolkit.resources.dll">
+      <publishTime>12/14/2013 22:34:05</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.Edm.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.Data.OData.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Spatial.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.Edm.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/Microsoft.Data.OData.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/System.Spatial.resources.dll">
+      <publishTime>12/05/2013 03:55:46</publishTime>
+    </File>
+    <File Include="CheckConnection.aspx">
+      <publishTime>03/10/2017 16:00:57</publishTime>
+    </File>
+    <File Include="error.html">
+      <publishTime>08/20/2018 01:13:02</publishTime>
+    </File>
+    <File Include="ExaminationController.Master">
+      <publishTime>08/19/2018 14:18:54</publishTime>
+    </File>
+    <File Include="frmAddQuestions.aspx">
+      <publishTime>08/13/2018 04:13:32</publishTime>
+    </File>
+    <File Include="frmChangePwd.aspx">
+      <publishTime>03/21/2017 08:35:43</publishTime>
+    </File>
+    <File Include="frmExamCompleted.aspx">
+      <publishTime>08/18/2018 21:52:49</publishTime>
+    </File>
+    <File Include="frmInstructions.aspx">
+      <publishTime>08/12/2018 14:21:00</publishTime>
+    </File>
+    <File Include="frmNewController.aspx">
+      <publishTime>03/02/2017 08:08:45</publishTime>
+    </File>
+    <File Include="frmResult.aspx">
+      <publishTime>10/30/2017 08:40:13</publishTime>
+    </File>
+    <File Include="frmSetExamDateTime.aspx">
+      <publishTime>08/18/2018 16:38:27</publishTime>
+    </File>
+    <File Include="frmStudRegistration.aspx">
+      <publishTime>08/19/2018 14:18:54</publishTime>
+    </File>
+    <File Include="frmSubjects.aspx">
+      <publishTime>08/16/2018 23:37:54</publishTime>
+    </File>
+    <File Include="frmTest.aspx">
+      <publishTime>08/20/2018 01:36:06</publishTime>
+    </File>
+    <File Include="images/1.jpg">
+      <publishTime>03/24/2017 18:43:33</publishTime>
+    </File>
+    <File Include="images/404.png">
+      <publishTime>08/20/2018 01:05:21</publishTime>
+    </File>
+    <File Include="images/404_page_cover.jpg">
+      <publishTime>08/20/2018 00:56:03</publishTime>
+    </File>
+    <File Include="images/back.png">
+      <publishTime>03/24/2017 18:53:09</publishTime>
+    </File>
+    <File Include="images/background.PNG">
+      <publishTime>03/21/2017 07:55:00</publishTime>
+    </File>
+    <File Include="images/banner.jpg">
+      <publishTime>02/24/2017 14:13:49</publishTime>
+    </File>
+    <File Include="images/bg.jpg">
+      <publishTime>08/08/2017 09:30:22</publishTime>
+    </File>
+    <File Include="images/FTU1BBRFLI8MT4O.LARGE.jpg">
+      <publishTime>08/20/2018 01:07:59</publishTime>
+    </File>
+    <File Include="images/max.jpg">
+      <publishTime>08/08/2017 09:52:31</publishTime>
+    </File>
+    <File Include="index.aspx">
+      <publishTime>08/20/2018 01:37:38</publishTime>
+    </File>
+    <File Include="Instructions.xml">
+      <publishTime>03/21/2017 10:05:07</publishTime>
+    </File>
+    <File Include="PrintResult.aspx">
+      <publishTime>10/28/2017 15:12:47</publishTime>
+    </File>
+    <File Include="script/jquery.min.js">
+      <publishTime>08/11/2018 23:21:32</publishTime>
+    </File>
+    <File Include="script/SetExam.js">
+      <publishTime>08/17/2018 23:03:25</publishTime>
+    </File>
+    <File Include="Styles/design.css">
+      <publishTime>03/27/2017 14:34:43</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>08/20/2018 02:01:54</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

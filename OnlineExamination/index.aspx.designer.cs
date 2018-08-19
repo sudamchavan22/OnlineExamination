@@ -31,6 +31,15 @@ namespace OnlineExamination {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
+        /// hfExpDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfExpDate;
+        
+        /// <summary>
         /// lbtnLogin control.
         /// </summary>
         /// <remarks>
@@ -103,13 +112,13 @@ namespace OnlineExamination {
         protected global::System.Web.UI.WebControls.HiddenField hfexamid;
         
         /// <summary>
-        /// txtName control.
+        /// txtUserIdStud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
+        protected global::System.Web.UI.WebControls.TextBox txtUserIdStud;
         
         /// <summary>
         /// RequiredFieldValidator3 control.
@@ -121,13 +130,13 @@ namespace OnlineExamination {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
-        /// txtEmail control.
+        /// txtPwdStud control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtPwdStud;
         
         /// <summary>
         /// RequiredFieldValidator4 control.
@@ -137,15 +146,6 @@ namespace OnlineExamination {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
-        
-        /// <summary>
-        /// RegularExpressionValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// btnSubmit control.

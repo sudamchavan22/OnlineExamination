@@ -62,7 +62,7 @@ namespace OnlineExamination
             ds = new DataSet();
             ds = db.StudentDetails(stud_id);
             lblName.Text = ds.Tables[0].Rows[0]["name"].ToString();
-            lblEmail.Text = ds.Tables[0].Rows[0]["email"].ToString();
+            //lblEmail.Text = ds.Tables[0].Rows[0]["email"].ToString();
             
 
         }
@@ -282,6 +282,7 @@ namespace OnlineExamination
         //Add Colors to the Solve Or Unsolve Que.No Buttons...!
         protected void lvIndexOfQ_ItemDataBound(object sender, ListViewItemEventArgs e)
         {
+
             int qcount = Convert.ToInt32(ViewState["Q_Count"]);
             rowNo = Convert.ToInt32(ViewState["rowNo"].ToString());
             if (rowNo <= qcount)
@@ -289,6 +290,7 @@ namespace OnlineExamination
                 string rowNom = rowNo.ToString();
                 Button btnIndexOfQ = (Button)e.Item.FindControl("btnIndexOfQ");
                 int index = Convert.ToInt32(btnIndexOfQ.Text);
+                ViewState["btnIndex"] = index;
                 if (ViewState["UnSolvIndex"] != null)
                 {
                     List<int> listUnSolve = new List<int>();

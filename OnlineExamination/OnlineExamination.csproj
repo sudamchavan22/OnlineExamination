@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CheckConnection.aspx" />
+    <Content Include="error.html" />
     <Content Include="frmAddQuestions.aspx" />
     <Content Include="frmChangePwd.aspx" />
     <Content Include="frmExamCompleted.aspx" />
@@ -76,10 +77,13 @@
     <Content Include="frmSubjects.aspx" />
     <Content Include="frmTest.aspx" />
     <Content Include="images\1.jpg" />
+    <Content Include="images\404.png" />
+    <Content Include="images\404_page_cover.jpg" />
     <Content Include="images\back.png" />
     <Content Include="images\background.PNG" />
     <Content Include="images\banner.jpg" />
     <Content Include="images\bg.jpg" />
+    <Content Include="images\FTU1BBRFLI8MT4O.LARGE.jpg" />
     <Content Include="images\max.jpg" />
     <Content Include="index.aspx" />
     <Content Include="Instructions.xml" />
@@ -197,6 +201,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExaminationController.Master" />
+    <None Include="Properties\PublishProfiles\publishToIIS.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

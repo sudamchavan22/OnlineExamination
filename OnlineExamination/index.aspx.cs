@@ -20,15 +20,20 @@ namespace OnlineExamination
             db = new DBOperations();
             if (!IsPostBack)
             {
-                loadExamDetails();
-                date=DateTime.Now.Date;
-                date1=date.ToString("dd/MM/yyyy");
-                date = DateTime.Now.ToLocalTime();
-                start_time=date.ToShortTimeString();
-                bool Started=db.ExamTime(start_time,examid);
-                if (lblDate.Text == date1 && Started)
+
+
+                if (ValidateLi())
                 {
-                    btnSubmit.Enabled = true;
+                    loadExamDetails();
+                    date = DateTime.Now.Date;
+                    date1 = date.ToString("dd/MM/yyyy");
+                    date = DateTime.Now.ToLocalTime();
+                    start_time = date.ToShortTimeString();
+                    bool Started = db.ExamTime(start_time, examid);
+                    if (lblDate.Text == date1 && Started)
+                    {
+                        btnSubmit.Enabled = true;
+                    }
                 }
                            }
         }
@@ -67,20 +72,30 @@ namespace OnlineExamination
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             examid=Convert.ToInt32(hfexamid.Value);
-            bool Authentication = db.ExamDoneChacking(txtName.Text, txtEmail.Text,examid );
+            bool Authentication = db.ExamDoneChacking(txtUserIdStud.Text,examid );
             if (Authentication == true)
             {
-                int stud_id = db.AddNewStudentDetails(txtName.Text, txtEmail.Text);
+                int stud_id = db.AddNewStudentDetails(txtUserIdStud.Text, txtPwdStud.Text);
                 if (stud_id > 0)
                 {
                     Session["examid"]= hfexamid.Value;
                     Session["stud_id"] = stud_id;
                     Response.Redirect("~/frmInstructions.aspx");
                 }
+                else
+                    Response.Write("<script>alert('Enter valid Username/Password..!')</script>");
             }
             else
                 Response.Write("<script>alert('You done with Your turn..!')</script>");
         }
+        protected bool ValidateLi() {
+            if (Convert.ToDateTime(hfExpDate.Value) <= Convert.ToDateTime(DateTime.Now.ToShortDateString()))
+                Response.Redirect("~/error.html");
+            return true;
+        
+        }
+
+
         protected void Timer1_Tick(object sender, EventArgs e)
         {
             date = DateTime.Now.ToLocalTime();
