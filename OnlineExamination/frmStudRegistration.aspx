@@ -9,6 +9,7 @@
     <script src="JavaScript.js" type="text/javascript"></script>
      
 
+
  <style type="text/css">
           .auto-style6 {
             /*//margin-left: 20px;*/
@@ -65,7 +66,7 @@ border-radius:10px;
 
 
 
-     <script type="text/javascript">
+     <script  type="text/javascript">
          $(document).ready(function () {
              return callevent()
            // alert('alert')
@@ -74,7 +75,7 @@ border-radius:10px;
                     //alert('Enter Student Name')
                    // return false
             // }
-            return true
+           // return true
            
         });
     </script>

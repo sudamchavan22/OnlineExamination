@@ -18,13 +18,22 @@ namespace OnlineExamination
         protected void Page_Load(object sender, EventArgs e)
         {
               db = new DBOperations();
-           // Page.ClientScript.RegisterStartupScript(GetType(), "none", "<script>executeAfter();</script>", false);
+            // Page.ClientScript.RegisterStartupScript(GetType(), "none", "<script>executeAfter();</script>", false);
             if (!IsPostBack)
             {
                 setlocation();
                 fillctrl();
                 divStudDetail.Style.Add("display", "block");
 
+            }
+            else
+            {
+                if (ScriptManager.GetCurrent(Page).IsInAsyncPostBack == true)
+                {
+                  // string cplid = ScriptManager.GetCurrent(Page).IsInAsyncPostBack.ToString();
+
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "AddAttributesClientSide", "callevent();", true);
+                }
             }
             //                loadData();
         }
@@ -37,7 +46,11 @@ namespace OnlineExamination
 
         private void fillctrl()
         {
+<<<<<<< HEAD
             str = "select classId,className from tbl_class_Master";
+=======
+            str = "select classId,class from tbl_class_Master";
+>>>>>>> 5757134e4e2316b2dd37150b9c7267cb780662cc
             db.fillCbo(str, ddl_Class);
             ddl_Class.Items.Insert(0, new ListItem("--Select Class--", "0"));
 
