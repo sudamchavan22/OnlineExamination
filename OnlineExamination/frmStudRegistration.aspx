@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ExaminationController.Master" AutoEventWireup="true" CodeBehind="frmStudRegistration.aspx.cs" Inherits="OnlineExamination.frmStudRegistration" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<<<<<<< HEAD
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -10,6 +11,8 @@
      
 
 
+=======
+>>>>>>> parent of c02331b... Merge branch 'master' of https://github.com/sudamchavan22/OnlineExamination
  <style type="text/css">
           .auto-style6 {
             /*//margin-left: 20px;*/
@@ -63,6 +66,7 @@ border-radius:10px;
      
      }
     </style>
+<<<<<<< HEAD
 
 
 
@@ -107,16 +111,16 @@ border-radius:10px;
         });
         
             </script>
+=======
+>>>>>>> parent of c02331b... Merge branch 'master' of https://github.com/sudamchavan22/OnlineExamination
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    
     <h2>Student Registration</h2>
     <div id="divStudDetail" runat="server">
                     <div class="div-style">
                         <asp:Label ID="lblStudName" runat="server" Text="Student Name :-" CssClass="lbl-style"></asp:Label>
             <asp:TextBox ID="txt_StudName" runat="server" Height="24px" CssClass="auto-style6" Width="330px"></asp:TextBox>
-                   <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_StudName" ErrorMessage="Can't be leave field  Empty." ForeColor="Red" ValidationGroup="Subject"></asp:RequiredFieldValidator>--%>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_StudName" ErrorMessage="Can't be leave field  Empty." ForeColor="Red" ValidationGroup="Subject"></asp:RequiredFieldValidator>
                 </div>
             <div class="div-style">
                         <asp:Label ID="lblClass" runat="server" Text="Class :-" CssClass="lbl-style"></asp:Label>
@@ -132,12 +136,12 @@ border-radius:10px;
             <div class="div-style">
                 <asp:Label ID="lblUserID" runat="server" Text="User ID :-"></asp:Label>
             <asp:TextBox ID="txt_UserID" runat="server" Height="24px" CssClass="auto-style6" Width="330px"></asp:TextBox>
-                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txt_UserID" ErrorMessage="Can't be leave field  Empty." ForeColor="Red" ValidationGroup="Subject"></asp:RequiredFieldValidator>--%>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txt_UserID" ErrorMessage="Can't be leave field  Empty." ForeColor="Red" ValidationGroup="Subject"></asp:RequiredFieldValidator>
                      </div>
              <div class="div-style">
                  <asp:Label ID="lblPassward" runat="server" Text="Passward :-"></asp:Label>
             <asp:TextBox ID="txt_Passward" runat="server" Height="24px" CssClass="auto-style6" Width="330px"></asp:TextBox>
-                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txt_Passward" ErrorMessage="Can't be leave field  Empty." ForeColor="Red" ValidationGroup="Subject"></asp:RequiredFieldValidator>--%>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txt_Passward" ErrorMessage="Can't be leave field  Empty." ForeColor="Red" ValidationGroup="Subject"></asp:RequiredFieldValidator>
                      </div>
         </div>
       
@@ -177,10 +181,10 @@ border-radius:10px;
                     </asp:GridView>
         </div>
       <div id="divBtn" class="btn-style">
-            <asp:Button ID="BtnAdd" runat="server" CssClass="btn-lg"  Text="Add"  style="width:100px" OnClick="BtnAdd_Click" CausesValidation="False" />
-            <asp:Button ID="BtnSave" runat="server" CssClass="btn-lg"  Text="Save" style="width:100px"  OnClick="BtnSave_Click" CausesValidation="False" />
-            <asp:Button ID="BtnEdit" runat="server" CssClass="btn-lg"  Text="Edit"  style="width:100px" OnClick="BtnEdit_Click" CausesValidation="False" />
-            <asp:Button ID="BtnCancel" runat="server" CssClass="btn-lg"  Text="Cancel" style="width:100px" OnClick="BtnCancel_Click" CausesValidation="False" />
+            <asp:Button ID="BtnAdd" runat="server" CssClass="btn-lg"  Text="Add"  style="width:100px" OnClick="BtnAdd_Click"/>
+            <asp:Button ID="BtnSave" runat="server" CssClass="btn-lg"  Text="Save" ValidationGroup="Subject" style="width:100px" OnClick="BtnSave_Click"/>
+            <asp:Button ID="BtnEdit" runat="server" CssClass="btn-lg"  Text="Edit"  style="width:100px" OnClick="BtnEdit_Click"/>
+            <asp:Button ID="BtnCancel" runat="server" CssClass="btn-lg"  Text="Cancel" style="width:100px" OnClick="BtnCancel_Click"/>
       </div>
     <asp:HiddenField ID="txt_StudSrno" runat="server" Value="0" />
     

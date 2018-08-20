@@ -7,12 +7,15 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+<<<<<<< HEAD
     <UseGlobalApplicationHostFile />
 <<<<<<< HEAD
     <NameOfLastUsedPublishProfile>publishToIIS</NameOfLastUsedPublishProfile>
 =======
     <NameOfLastUsedPublishProfile>publishonlineexamination</NameOfLastUsedPublishProfile>
 >>>>>>> 5757134e4e2316b2dd37150b9c7267cb780662cc
+=======
+>>>>>>> parent of c02331b... Merge branch 'master' of https://github.com/sudamchavan22/OnlineExamination
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

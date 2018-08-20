@@ -17,8 +17,12 @@ namespace OnlineExamination
         public Boolean editflag = false;
         protected void Page_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
               db = new DBOperations();
             // Page.ClientScript.RegisterStartupScript(GetType(), "none", "<script>executeAfter();</script>", false);
+=======
+            db = new DBOperations();
+>>>>>>> parent of c02331b... Merge branch 'master' of https://github.com/sudamchavan22/OnlineExamination
             if (!IsPostBack)
             {
                 setlocation();
@@ -205,7 +209,5 @@ namespace OnlineExamination
             divDGSlist.Style.Add("display", "none");
 
         }
-
-        
     }
 }
