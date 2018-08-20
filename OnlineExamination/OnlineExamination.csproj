@@ -201,11 +201,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExaminationController.Master" />
-<<<<<<< HEAD
     <None Include="Properties\PublishProfiles\publishToIIS.pubxml" />
-=======
     <None Include="Properties\PublishProfiles\publishonlineexamination.pubxml" />
->>>>>>> 5757134e4e2316b2dd37150b9c7267cb780662cc
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
